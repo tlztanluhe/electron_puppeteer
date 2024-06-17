@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron Puppeteer</title>
+</head>
+<body>
+  <textarea id="script" rows="10" cols="50"></textarea>
+  <br>
+  <button id="loadButton">加载并执行</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    document.getElementById('loadButton').addEventListener('click', () => {
+      const script = document.getElementById('script').value;
+      ipcRenderer.send('execute-script', script);
+    });
+  </script>
+</body>
+</html>
